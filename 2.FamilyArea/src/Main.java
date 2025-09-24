@@ -7,6 +7,10 @@ public class Main {
         F.addMember("Bob", new FieldArea(FieldType.CIRCLE, 3, 0));
         F.addMember("Charlie", new FieldArea(FieldType.TRIANGLE, 4, 6));
 
+        System.out.println("Members Count: " + F.membersCount);
+        for(var name : F.membersNames){
+            System.out.println(name + "'s Area: " + F.membersArea.get(name));
+        }
         System.out.println("Total Area: " + F.getTotalArea());
         System.out.println("Average Area: " + F.getAverageArea());
     }

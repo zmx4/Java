@@ -1,22 +1,22 @@
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.CopyOnWriteArrayList;
 
 public class Family {
 //    String familyName;
-    int membersCount;
-    double totalArea;
-    Map<String, Double> membersArea;
-    Map<String, FieldArea> fields;
-    List<String> membersNames;
+    public int membersCount;
+    public double totalArea;
+    public Map<String, Double> membersArea;
+    public Map<String, FieldArea> fields;
+    public List<String> membersNames;
 
     public Family(){
         this.membersCount = 0;
         this.totalArea = 0;
-        this.membersArea = new ConcurrentHashMap<String, Double>();
-        this.fields = new ConcurrentHashMap<String, FieldArea>();
-        this.membersNames = new ArrayList<>();
+        this.membersArea = new ConcurrentHashMap<>();
+        this.fields = new ConcurrentHashMap<>();
+        this.membersNames = new CopyOnWriteArrayList<>();
     }
 
     public void addMember(String name, FieldArea area){
