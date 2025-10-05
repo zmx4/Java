@@ -5,7 +5,7 @@ fun main(args: Array<String>) {
     val input = Scanner(System.`in`)
     while (input.hasNextInt()) {
         val x = abs(input.nextInt())
-        if (x == 0) {
+        if (x !in 0..65536) {
             println("No!")
             continue
         }
