@@ -1,7 +1,7 @@
 /**
  * 三角形地块，使用海伦公式计算面积。
  */
-public class Triangle extends Field {
+public class Triangle implements Field {
     /** 边 a 长度 */
     private final double sideA;
     /** 边 b 长度 */
