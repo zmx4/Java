@@ -43,14 +43,18 @@ public class Family {
     }
 
     /**
-     * 返回包含地块信息、成员数量与人均面积的描述。
+     * @return 返回包含地块信息、成员数量与人均面积的描述。
      */
     public String getFamilyFieldInformation() {
-        return field.getFieldInformation() +
-            ", Members: " +
-            membersCount +
-            ", Area per Member: " + 
-            ((Double)(calculateAreaPerMember())).toString().substring(0, 
-            ((Double)(calculateAreaPerMember())).toString().indexOf('.') + 2);
+        // return field.getFieldInformation() +
+        //     ", Members: " +
+        //     membersCount +
+        //     ", Area per Member: " + 
+        //     ((Double)(calculateAreaPerMember())).toString().substring(0, 
+        //     ((Double)(calculateAreaPerMember())).toString().indexOf('.') + 2);
+        return String.format("%s, Members: %d, Area per Member: %.2f",
+            field.getFieldInformation(),
+            membersCount,
+            calculateAreaPerMember());
     }
 }
