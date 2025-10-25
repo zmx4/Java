@@ -1,6 +1,7 @@
 import com.student.credits.*;
 
 public class Main {
+
     public static void main(String[] args) {
         // 创建一个学生
         Student student1 = new Student("张三");
@@ -17,16 +18,8 @@ public class Main {
         student1.addCredit(new Paper("关于人工智能在教育领域的应用", 5.0));
 
         // 老师统计并打印学生的学分
-        CreditManager teacher = new CreditManager();
+        CreditManager teacher = new CreditManager(10.0);
         teacher.printStudentCreditReport(student1);
-
-        // 假设毕业需要10个学分
-        final double requiredCreditsForGraduation = 10.0;
-        System.out.println("毕业要求总学分: " + requiredCreditsForGraduation);
-        if (student1.getTotalCredits() >= requiredCreditsForGraduation) {
-            System.out.println(student1.getName() + " 已获得足够学分，可以毕业。");
-        } else {
-            System.out.println(student1.getName() + " 尚未获得足够学分，仍需努力。");
-        }
+        teacher.checkGraduationStatus(student1);
     }
 }
