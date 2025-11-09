@@ -1,7 +1,7 @@
 /**
  * 矩形地块，实现面积与周长的计算。
  */
-public class Rectangle implements Field {
+public class Rectangle extends Field {
     /** 长边长度 */
     private final double length;
     /** 短边长度 */

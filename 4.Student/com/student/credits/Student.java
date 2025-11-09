@@ -23,6 +23,12 @@ public class Student {
         credits.add(credit);
     }
 
+    public void addCredits(Credit... credits) {
+        for (Credit credit : credits) {
+            this.credits.add(credit);
+        }
+    }
+
     /**
      * 计算并返回学生的总学分。
      * @return 总学分。

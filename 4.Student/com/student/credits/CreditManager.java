@@ -5,17 +5,17 @@ package com.student.credits;
  */
 public class CreditManager {
 
-    /**
-     * 打印指定学生的学分详情。
-     * @param student 要查询的学生。
-     */
+    
 
     final double requiredCreditsForGraduation;
 
     public CreditManager(double requiredCreditsForGraduation) {
         this.requiredCreditsForGraduation = requiredCreditsForGraduation;
     }
-
+    /**
+     * 打印指定学生的学分详情。
+     * @param student 要查询的学生。
+     */
     public void printStudentCreditReport(Student student) {
         System.out.println("--- 学分统计报告 ---");
         System.out.println("学生姓名: " + student.getName());

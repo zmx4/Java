@@ -5,7 +5,7 @@ import java.lang.Math;
  * <p>
  * 注意：单位未限定，请在全局保持一致的度量单位（例如米）。
  */
-public class Circle implements Field {
+public class Circle extends Field {
     /** 圆的半径 */
     private final double radius;
 
