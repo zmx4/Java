@@ -3,7 +3,7 @@ import java.util.ArrayList;
 /**
  * 家庭与地块的组合，便于基于成员数计算人均面积并输出信息。
  */
-public class Family {
+public class Family implements IPerPersonAreaCal {
     /** 家庭拥有的地块 */
     private final ArrayList<Field> fields = new ArrayList<Field>();
     /** 家庭成员数量（>0） */

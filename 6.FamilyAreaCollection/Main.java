@@ -9,10 +9,12 @@ public class Main {
         family.addField(new Triangle(3, 4, 5));
         family.addField(new Circle(7));
 
+        IPerPersonAreaCal areaCal = family;
+
         // 输出家庭信息
         System.out.println("家庭成员数量: " + family.getMembersCount());
         System.out.println("家庭拥有地块总面积: " + family.getTotalArea());
-        System.out.println("家庭人均面积: " + family.getPerCapitaArea());
+        System.out.println("家庭人均面积: " + areaCal.getPerCapitaArea());
 
         
     }
