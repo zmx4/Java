@@ -25,6 +25,7 @@ public class Triangle extends Field {
     /**
      * 使用海伦公式计算面积：设半周长 s=(a+b+c)/2，面积=√(s(s-a)(s-b)(s-c))。
      */
+    @Override
     public double calculateArea() {
         double s = (sideA + sideB + sideC) / 2;
         return Math.sqrt(s * (s - sideA) * (s - sideB) * (s - sideC));
@@ -33,6 +34,7 @@ public class Triangle extends Field {
     /**
      * 计算周长：a + b + c。
      */
+    @Override
     public double calculatePerimeter() {
         return sideA + sideB + sideC;
     }

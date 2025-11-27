@@ -23,6 +23,7 @@ public class Circle extends Field {
      *
      * @return 面积
      */
+    @Override
     public double calculateArea() {
         return Math.PI * radius * radius;
     }
@@ -32,6 +33,7 @@ public class Circle extends Field {
      *
      * @return 周长
      */
+    @Override
     public double calculatePerimeter() {
         return 2 * Math.PI * radius;
     }

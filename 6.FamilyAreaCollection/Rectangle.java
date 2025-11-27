@@ -21,6 +21,7 @@ public class Rectangle extends Field {
     /**
      * 面积计算：长 × 宽。
      */
+    @Override
     public double calculateArea() {
         return length * width;
     }
@@ -28,6 +29,7 @@ public class Rectangle extends Field {
     /**
      * 周长计算：2 × (长 + 宽)。
      */
+    @Override
     public double calculatePerimeter() {
         return 2 * (length + width);
     }

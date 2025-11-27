@@ -34,6 +34,9 @@ public class Family implements IPerPersonAreaCal {
      * @return 总面积
      */
     public double getTotalArea() {
+        if(fields == null||fields.isEmpty()) {
+            return 0;
+        }
         double totalArea = 0;
         for (Field field : fields) {
             totalArea += field.calculateArea();
