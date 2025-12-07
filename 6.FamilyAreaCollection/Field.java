@@ -1,7 +1,7 @@
 /**
  * 抽象的地块基类，定义面积与周长的计算契约。
  */
-public abstract class Field {
+public abstract class Field implements IAreaCalc {
     /**
      * 计算地块面积。
      * @return 面积数值

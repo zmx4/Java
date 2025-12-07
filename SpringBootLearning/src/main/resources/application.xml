@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+    <bean name="service" class="com.tick.springbootlearning.springbootlearning.service.AService"/>
+    <bean name="teacher" class="com.tick.springbootlearning.springbootlearning.entity.ArtTeacher"/>
+    <bean name="student" class="com.tick.springbootlearning.springbootlearning.entity.Student">
+        <constructor-arg name="teacher" ref="teacher"/>
+        <constructor-arg name="name" value="a"/>
+    </bean>
+<!--    <bean class="com.tick.springbootlearning.springbootlearning.entity.ArtTeacher"/>-->
+
+</beans>

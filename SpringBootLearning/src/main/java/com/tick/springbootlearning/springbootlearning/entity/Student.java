@@ -1,0 +1,33 @@
+package com.tick.springbootlearning.springbootlearning.entity;
+
+import lombok.ToString;
+
+@ToString
+public class Student {
+    private String name;
+    private Teacher teacher;
+    public void hello(){
+        System.out.println("hello");
+    }
+
+    public Student(Teacher teacher, String name) {
+        this.teacher = teacher;
+        this.name = name;
+    }
+
+    public Teacher getTeacher() {
+        return teacher;
+    }
+
+    public void setTeacher(Teacher teacher) {
+        this.teacher = teacher;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+}
