@@ -16,6 +16,9 @@ public interface IWordService {
     // 列出所有单词及其翻译
     public void listAllWords();
 
+    // 获取所有单词列表
+    public java.util.List<String> getAllWords();
+
     // 初始化数据
     public void initializeData();
 }

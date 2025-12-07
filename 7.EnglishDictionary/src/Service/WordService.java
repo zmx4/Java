@@ -2,6 +2,8 @@ package Service;
 
 import Entity.Word;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 import java.util.concurrent.ConcurrentHashMap;
@@ -44,6 +46,15 @@ public class WordService implements IWordService{
         for(Map.Entry<Word, String> entry : wordMap.entrySet()){
             System.out.println(entry.getKey() + ": " + entry.getValue() + " | Example: " + exampleMap.get(entry.getKey()));
         }
+    }
+
+    @Override
+    public List<String> getAllWords() {
+        List<String> words = new ArrayList<>();
+        for (Word w : wordMap.keySet()) {
+            words.add(w.word());
+        }
+        return words;
     }
 
     @Override

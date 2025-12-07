@@ -21,6 +21,10 @@ public class Main {
         wordService.deleteWord("orange");
         System.out.println("\n删除单词 orange 后：");
         wordService.listAllWords();
+
+        System.out.println("\n=== 随机测验 ===");
+        Service.IWordGame game = new Service.WordGame(wordService);
+        game.play();
     }
 
 
