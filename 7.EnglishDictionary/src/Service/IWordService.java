@@ -5,7 +5,7 @@ public interface IWordService {
     public String getWordTranslation(String word);
 
     // 添加新单词及其翻译
-    public void addWord(String word, String translation);
+    public void addWord(String word, String translation ,String example);
 
     // 删除单词
     public void deleteWord(String word);

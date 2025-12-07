@@ -10,7 +10,7 @@ public class Main {
         // 列出所有单词
         wordService.listAllWords();
 
-        wordService.addWord("grape", "葡萄");
+        wordService.addWord("grape", "葡萄" , "Grapes can be made into wine.");
         System.out.println("\n添加单词 grape 后：");
         wordService.listAllWords();
 
