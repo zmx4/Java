@@ -6,6 +6,7 @@ import java.io.FileWriter;
 
 import java.util.HashMap;
 import java.util.Map;
+
 /*
 按以下要求编写程序：（20分）
 假设本地磁盘D盘根目录下有一文件order.txt，该文件
@@ -33,9 +34,15 @@ public class File {
                 String[] strs = temp.split("-");
                 hm.put(strs[0] + "-" + strs[1], Integer.parseInt(strs[2]));
             }
+            // while ((temp = bisp.readLine()) != null) {
+            // String[] strs = temp.split("-");
+            // hm.put(strs[0] + "-" + strs[1], hm.get(strs[0] + "-" + strs[1]) -
+            // Integer.parseInt(strs[2]));
+            // }
             while ((temp = bisp.readLine()) != null) {
                 String[] strs = temp.split("-");
-                hm.put(strs[0] + "-" + strs[1], hm.get(strs[0] + "-" + strs[1]) - Integer.parseInt(strs[2]));
+                String key = strs[0] + "-" + strs[1];
+                hm.merge(key, -Integer.parseInt(strs[2]), Integer::sum); // 减去已付金额
             }
             biso.close();
             bisp.close();
