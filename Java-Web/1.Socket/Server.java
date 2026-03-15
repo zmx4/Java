@@ -10,14 +10,10 @@ public class Server {
                 Socket s = ss.accept();
                 System.out.println("Connected from: " + s.getInetAddress());
                 BufferedReader br = new BufferedReader(new InputStreamReader(s.getInputStream()));
-                PrintWriter pw = new PrintWriter(s.getOutputStream(), true);
-
                 String message;
                 while ((message = br.readLine()) != null) {
                     System.out.println("Received: " + message);
-                    pw.println("Server Echo: " + message);
                 }
-
                 pw.close();
                 br.close();
                 s.close();

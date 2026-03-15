@@ -32,3 +32,5 @@ bin/
 .DS_Store
 3.NewFamilyAreaCalc/main.exe
 ELP/src/main/resources/org/tick/elp/stardict.db
+
+*.class
