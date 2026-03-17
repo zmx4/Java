@@ -14,10 +14,9 @@ public class Server {
                         System.out.println("Received: " + message);
                     }
                     br.close();
+                    System.out.println("Disconnected");
                 }
-                System.out.println("Disconnected");
             }
-            
         } catch (IOException e) {
         }
     }
