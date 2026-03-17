@@ -18,7 +18,6 @@ public class Server {
     public static Map<String, String> users = new ConcurrentHashMap<>();
     public static LocalDateTime nowTime = LocalDateTime.now();
     
-
     public static void main(String[] args) {
         ExecutorService pool = Executors.newFixedThreadPool(10);
         users.put("a", "111");
@@ -29,10 +28,10 @@ public class Server {
             while (true) {
                 Socket s = ss.accept();
                 System.out.println("Connected from: " + s.getInetAddress());
-                BufferedWriter bw = new BufferedWriter(new PrintWriter(s.getOutputStream(), true));
-                BufferedReader br = new BufferedReader(new InputStreamReader(s.getInputStream()));
                 pool.execute(() -> {
                     try {
+                        BufferedWriter bw = new BufferedWriter(new PrintWriter(s.getOutputStream(), true));
+                        BufferedReader br = new BufferedReader(new InputStreamReader(s.getInputStream()));
                         String line;
                         while ((line = br.readLine()) != null) {
                             Command cmd = parseCommand(line);
@@ -45,11 +44,13 @@ public class Server {
                                 case LOGIN:
                                     String[] parts = line.split(" ");
                                     if (parts.length == 3 && checkLogin(parts[1], parts[2])) {
-                                        bw.write("Login successful\n");
                                         nowTime = LocalDateTime.now();
                                         bw.write(nowTime.toString() + "\n");
+                                        bw.write("Login successful\n");
+                                        System.out.println("Successful login: " + line);
                                     } else {
                                         bw.write("Login failed\n");
+                                        System.out.println("Failed login attempt: " + line);
                                     }
                                     bw.flush();
                                     break;
@@ -64,7 +65,18 @@ public class Server {
                             }
                         }
                     } catch (IOException ex) {
-                        System.getLogger(Server.class.getName()).log(System.Logger.Level.ERROR, (String) null, ex);
+                        if (ex.getMessage() != null && ex.getMessage().contains("Connection reset")) {
+                            System.out.println("Client disconnected unexpectedly.");
+                        } else {
+                            System.getLogger(Server.class.getName()).log(System.Logger.Level.ERROR, (String) null, ex);
+                        }
+                    } finally {
+                        try {
+                            if (s != null && !s.isClosed()) {
+                                s.close();
+                            }
+                        } catch (IOException e) {
+                        }
                     }
                 });
 
@@ -83,8 +95,9 @@ public class Server {
 
     public static Command parseCommand(String line) {
         try {
-            return Command.valueOf(line.trim().toUpperCase());
-        } catch (IllegalArgumentException e) {
+            String[] parts = line.trim().split(" ");
+            return Command.valueOf(parts[0].toUpperCase());
+        } catch (IllegalArgumentException | ArrayIndexOutOfBoundsException e) {
             return null; // Invalid command
         }
     }
