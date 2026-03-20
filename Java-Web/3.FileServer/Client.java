@@ -20,6 +20,11 @@ public class Client {
                 bw.flush();
                 String document = br.readLine();
                 System.out.println("Received document: " + document);
+                bw.write("EXIT\n");
+                bw.flush();
+                BufferedWriter fileWriter = new BufferedWriter(new FileWriter("downloaded_p2.html"));
+                fileWriter.write(document);
+                fileWriter.close();
             }
 
 
