@@ -14,7 +14,7 @@ public class Pipe {
 
             Thread receiverThread = new Thread(() -> {
                 try {
-                    System.out.println("接收线程：准备接收数据...");
+                    System.out.println("接收线程:准备接收数据...");
                     byte[] buffer = new byte[1024];
                     int len;
                     while ((len = input.read(buffer)) != -1) {
@@ -22,17 +22,17 @@ public class Pipe {
                         System.out.print(received);
                     }
                     input.close();
-                    System.out.println("\n接收线程：数据接收完毕。");
+                    System.out.println("\n接收线程:数据接收完毕。");
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
             });
             receiverThread.start();
-            System.out.println("主线程：读取文件并发送...");
+            System.out.println("主线程:读取文件并发送...");
             String content = p.ReadTextFile("test.txt");
             output.write(content.getBytes());
             output.close();
-            System.out.println("主线程：发送完毕。");
+            System.out.println("主线程:发送完毕。");
 
         } catch (IOException e) {
             e.printStackTrace();
