@@ -1,4 +1,3 @@
-package PACKAGE_NAME;
-
 public interface IPayment {
+    void processPayment(double amount);
 }
