@@ -1,3 +1,5 @@
+package Service;
+
 import java.io.*;
 
 import jakarta.servlet.*;
@@ -8,6 +10,7 @@ public class LoginServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+		HttpSession session = request.getSession();
         String username = request.getParameter("username");
         String password = request.getParameter("password");
 		
@@ -17,13 +20,10 @@ public class LoginServlet extends HttpServlet {
             // PrintWriter out = response.getWriter();
             // out.println("<h1>Login successful!</h1>");
             // request.getRequestDispatcher("/getdatetime").forward(request, response);
-            // session.setAttribute("username",username);
-			// session.setAttribute("password",password);
-            HttpSession session = request.getSession();
+//            session.setAttribute("username",username);
+//			session.setAttribute("password",password);
 			session.setAttribute("isLogin",true);
-            String sessionid = Integer.toString((int)(Math.random() * 100000 + 1));
-            session.setAttribute("sessionid", sessionid);
-            response.sendRedirect(request.getContextPath() + "/getdatetime");
+            response.sendRedirect(request.getContextPath() + "/sports.html");
         } else {
             response.setContentType("text/html;charset=UTF-8");
             PrintWriter out = response.getWriter();

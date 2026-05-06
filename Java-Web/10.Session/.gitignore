@@ -37,3 +37,10 @@ build/
 
 ### Mac OS ###
 .DS_Store
+
+
+
+*/.mvn/
+*/mvnw
+*/mvnw.cmd
+*/pom.xml
