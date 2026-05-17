@@ -1,0 +1,54 @@
+<html>
+<head>
+    <title>buy sports</title>
+    <style type="text/css">
+    * {margin: 0px; padding: 0px; text-align: center; }
+    #container {  width: 400px; margin: 0px auto; text-align: left; border: 1px solid red; }
+
+    /* Border styles */
+    #table-1 thead, #table-1 tr {
+        border-top-width: 1px;
+        border-top-style: solid;
+        border-top-color: rgb(230, 189, 189);
+   }
+
+  #table-1 {
+       border-bottom-width: 1px;
+       border-bottom-style: solid;
+       border-bottom-color: rgb(230, 189, 189);
+   }
+
+   /* Padding and font style */
+  #table-1 td, #table-1 th { 
+        padding: 5px 10px;
+        font-size: 12px;
+        font-family: Verdana;
+        color: rgb(177, 106, 104);
+    }
+
+    /* Alternating background colors */
+    #table-1 tr:nth-child(even) {
+    background: rgb(238, 211, 210)
+    }
+
+    #table-1 tr:nth-child(odd) {
+         background: #FFF
+    }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <h1>体育用品购物页面</h1>
+        <form action="/myweb/buy" method="post">
+        <table id="table-1">
+            <tr><td>序号</td><td>商品编码</td><td>商品名称</td><td>选择</td><td>数量</td></tr>
+            <tr><td>1</td><td>001</td><td>篮球</td><td><input type="checkbox" id="codechk" name="codechk" value="001"></input></td><td><input type="text" id="001" name="001" value="1"></input></td></tr>
+            <tr><td>2</td><td>002</td><td>足球</td><td><input type="checkbox" id="codechk" name="codechk" value="002"></input></td><td><input type="text" id="002" name="002" value="1"></input></td></tr>
+            <tr><td>3</td><td>003</td><td>乒乓球</td><td><input type="checkbox" id="codechk" name="codechk" value="003"></input></td><td><input type="text" id="003" name="003" value="1"></input></td></tr>
+            <tr><td>4</td><td>004</td><td>羽毛球</td><td><input type="checkbox" id="codechk" name="codechk" value="004"></input></td><td><input type="text" id="004" name="004" value="1"></input></td></tr>
+        </table>
+        <input type="submit" />
+        </form>
+    </div>
+</body>
+</html>
