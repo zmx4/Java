@@ -1,0 +1,29 @@
+  <script src="js/jquery-3.7.0.js"></script>
+  <script type="text/javascript">
+    $(document).ready(function() {
+      //查询所有
+      $("#add").click(function(){
+        var username = $("#username").val();
+        var password = $("#password").val();
+        $.ajax({
+          url : "adduser",	//请求url
+          type : "POST",	//请求类型  post|get
+          data : { 
+          	         username : username,
+          	         password : password
+          	     },
+          dataType : "json",  //返回数据的类型 text|json|html
+          success : function(data){	
+            if (data.result)
+            {
+            	alert("add user success");          	
+            }
+          }
+        });
+	    });
+    });
+  </script>
+
+  UserName:<input type="text" id="username" /><br />
+  Password:<input type="text" id="password" /><br />
+  <input type="button" id="add" value="Add" />

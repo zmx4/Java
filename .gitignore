@@ -34,3 +34,4 @@ bin/
 ELP/src/main/resources/org/tick/elp/stardict.db
 
 *.class
+*.jar

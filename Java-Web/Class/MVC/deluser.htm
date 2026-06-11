@@ -1,0 +1,37 @@
+  <script src="js/jquery-3.7.0.js"></script>
+  <script type="text/javascript">
+    $(document).ready(function() {
+      //查询所有
+        $.ajax({
+        url : "listalluser",	//请求url
+          type : "POST",	    //请求类型  post|get
+          dataType : "json",  //返回数据的类型 text|json|html
+          success : function(data){	
+             console.log(data);
+             var tr;
+             $.each(data.root, function(index, value)
+             {
+                 tr = "<tr><td><input type='checkbox'></td><td>"+ value.id +"</td><td>"+ value.username 
+                 + "</td><td></td><td>"
+                 + "<input type='button' value='删除' />"
+                 + "<input type='button' value='修改' />"
+                 + "</td></tr>";
+                 
+                 alert(tr);
+                 
+                 $("#users").append(tr);  
+             });
+          }
+        });
+	    });
+  </script>
+  
+  <table id="users" width="400px" height="50px" border="2px" cellspacing="0" cellpadding="0">
+    <tr id="tr0">
+      <td><input type="checkbox"></td>
+      <td>序号</td>
+      <td>姓名</td>
+      <td>密码</td>
+      <td>操作</td>
+    </tr>
+  </table>

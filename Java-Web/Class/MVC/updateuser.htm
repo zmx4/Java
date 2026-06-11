@@ -1,0 +1,153 @@
+<style>
+			.wrapper {
+				width: 600px;
+				margin: 0 auto;
+			}
+ 
+			.modal {
+				width: 100%;
+				height: 100vh;
+				background-color: rgba(0, 0, 0, 0.5);
+				position: absolute;
+				display: none;
+				border: 1px solid red;
+			}
+ 
+			.modal .form {
+				width: 500px;
+				height: 300px;
+				background-color: #fff;
+				position: absolute;
+				left: 0;
+				top: 0;
+				right: 0;
+				bottom: 0;
+				margin: auto;
+				padding: 20px;
+				box-sizing: border-box;
+			}
+ 
+			.modal .form input {
+				width: 100%;
+				height: 35px;
+				margin-bottom: 20px;
+			}
+ 
+			.modal div span:nth-of-type(2) {
+				float: right;
+			}
+ 
+			.modal .form div:nth-of-type(4) {
+				width: 100%;
+				text-align: center;
+			}
+</style>
+
+  <script type="text/javascript "src="js/jquery-3.7.0.js"></script>
+  <script type="text/javascript">
+    $(document).ready(function() {
+      //查询所有
+      $("#search").click(function(){
+        var tosearch = $("#tosearch").val();
+        $.ajax({
+          url : "listalluser",	//请求url
+          type : "POST",	//请求类型  post|get
+          data : { username : tosearch},
+          dataType : "json",  //返回数据的类型 text|json|html
+          success : function(data){	
+            console.log(data);
+             
+            if (data.result){
+              $("tr:not(:first)").remove();
+              var tr;
+              $.each(data.root, function(index, value)
+              {
+                tr = "<tr><td><input type='checkbox'></td><td class='uid'>"+ value.id +"</td><td class='uname'>"+ value.username +"</td><td class='upwd'>" + value.password +"</td></tr>";
+                $("#users").append(tr);  
+              });
+            }
+          }
+        });
+	    });
+
+				//关闭模态窗
+				function closeMdal() {
+					$(".modal").fadeOut();
+					$(".username").val("");
+					$(".pwd").val("");
+					$(".active").val("");
+				}
+ 
+				//显示模态窗
+				function showModal() {
+					$(".modal").fadeIn();
+				}
+
+	//点击关闭和X
+        	$(".closeModal").click(function() {
+			closeMdal();
+	})
+	    
+	$("#update").click(function(){
+          showModal();
+          
+	   var id = 0;
+           var username = "";
+           var password = "";
+
+        //遍历选中的checkbox
+        $("[type='checkbox']:checked").each(function() {
+          //获取checkbox所在行的id
+          var txt_id = $(this).parents("tr").find("td.uid");
+          id = parseInt(txt_id.text());
+          username = $(this).parents("tr").find("td.uname").text();
+          password = $(this).parents("tr").find("td.upwd").text();
+        });	
+
+        alert(password);  
+          
+        //执行修改
+        $.ajax({
+          url : "updateuser",	
+          type : "POST",
+          data : {
+                    id : id,
+                    username: username,
+                    password: password
+           },
+          dataType : "json",  
+          success : function(data){	
+            if (data.result){
+                //重新执行查询
+            }
+          }
+        });        
+	    });	    
+    });
+  </script>
+		<!-- 模态窗 -->
+		<div class="modal">
+			<div class="form">
+				<!-- 隐式接收修改的id值用于修改 -->
+				<input type="hidden" value="" class="active">
+				<div><span>修改记录</span><span class="closeModal">X</span></div>
+				<hr>
+                                <div><input type="text" class="userid" placeholder="ID"></div>
+				<div><input type="text" class="username" placeholder="用户名"></div>
+				<div><input type="password" class="pwd" placeholder="密码"></div>
+				<div><button class="closeModal">关闭</button>&emsp;&emsp;
+                                <button class="updateInfo">确认</button></div>
+			</div>
+		</div>
+
+  <input type="text" id="tosearch" />
+  <input type="button" id="search" value="查询" />
+  <input type="button" id="update" value="修改" />  
+  <table id="users" width="400px" height="50px" border="2px" cellspacing="0" cellpadding="0">
+    <tr id="tr0">
+      <td><input type="checkbox" id="checkall"></td>
+      <td>ID</td>
+      <td>姓名</td>
+      <td>密码</td>
+    </tr>
+  </table>

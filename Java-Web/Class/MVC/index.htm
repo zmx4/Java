@@ -1,0 +1,128 @@
+﻿<html>
+<head>
+  <meta charset="UTF-8">
+  <title>JavaWeb综合训练</title>
+	<style type="text/css">
+		* {	margin: 0px;	padding: 0px;	}
+		html,body {	height: 100%;	}
+		body{
+                    width:100%;
+                    margin: 0 auto;
+                }
+    
+		a:hover{ background-color: #98CBE8 }/*鼠标滑过*/
+		a{ text-decoration: none; }
+		
+		#box
+		{
+			position: relative;
+		}
+		
+		/*顶部标题栏*/
+		#title{
+			font-size: 40px;
+			font-weight: bold;
+			text-align: center;
+			border:1px solid #78341A;
+			height: 100px;
+			padding-top: 30px;
+		}
+		
+		/*左边侧边栏*/
+		#aside {
+			width: 20%;
+			height: 750px;
+			float: left;
+			background-color: #FFFFFF;
+			overflow: hidden;
+			text-align: center;
+			border:1px solid #78341A;
+		}
+		
+		#aside li
+		{
+			list-style:none;
+			height: 20px;
+			margin-top: 5px;
+		}
+		
+		/*中间分隔条*/
+		#splitbar {
+			font-size: 12px;
+			width: 12px;
+			float: left;
+			height: 750px;
+			line-height: 750px;
+			text-align: center;
+			font-weight: bold;
+			color: #78341A;
+			background-color: #98CBE8;
+		}
+
+		/*右则内容区域*/
+		#wrap {
+			width: 78%;
+			height: 750px;
+			float: left;
+		}
+		
+		#content
+		{
+      width: 100%;
+      height: 750px;
+		}
+	</style>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script type="text/javascript">
+    $(document).ready(function() { 
+      //分隔条单击事件
+      $('#splitbar').click(function(){
+	      if( parseInt($('#aside').css('width')) > 0)
+	  		{
+	  		    //如果左侧菜单栏的宽度大于0，就变成0实现隐藏效果
+			    $('#aside').css('width','0%');
+			    $('#splitbar').text('>');
+			    $('#wrap').css('width','98%');						
+	  		}
+	  		else
+	  		{
+	  		    //如果左侧菜单栏的宽度不大于0，就变成20%，实现显示效果
+		            $('#aside').css('width','20%');			
+	                    $('#wrap').css('width','78%');
+			    $('#splitbar').text('<');
+	  		}								
+      });
+    });
+  </script>
+</head>
+<body>
+
+
+	<div id="box">
+			<!--侧边栏菜单开始-->
+			<div id="title">JavaWeb MVC综合训练</div>
+			<div id="aside">
+				<h2>主菜单</h2>
+				<li><a href='adduser.htm' target='content'>用户增加</a></li>
+				<li><a href='deluser.htm' target='content'>用户删除</a></li>
+				<li><a href='updateuser.htm' target='content'>用户修改</a></li>
+				<li><a href='listalluser.htm' target='content'>用户浏览</a></li>
+			</div>
+			<!--侧边栏菜结束-->
+			
+			<!--中间分隔条开始-->
+			<div id="splitbar">
+				<label for='sidemenu'><</label>
+			</div>
+			<!--中间分隔条结束-->
+			
+			<!--右则内容区域开始-->
+			<div id='wrap'>
+				<iframe name='content' src='' id='content'>
+			        </iframe>
+			</div>
+			<!--右则内容区域结束-->
+	</div>
+</body>
+</html>
+
